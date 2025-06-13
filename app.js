@@ -1,5 +1,6 @@
 import { createServer } from 'http';
 import { writeFileSync } from 'fs'; //filesystem for creating a new file
+import { error } from 'console';
 
 const server = createServer((req,res)=>{
     console.log(req.url,req.method,req.headers)
@@ -16,15 +17,17 @@ const server = createServer((req,res)=>{
         const body=[];
         req.on('data',(chunk)=>{
             console.log(chunk);
-            body.push(chunk)});
-        req.on('end',()=>{
+            body.push(chunk)
+        });
+        return req.on('end',()=>{
         const parsedData= Buffer.concat(body).toString();
         console.log(parsedData);
         const message = parsedData.split('=')[1];
-        writeFileSync('message.txt',message);
-        res.statusCode = 302;
-        res.setHeader('Location', '/');
-        return res.end();
+        writeFile('message.txt',message,(error)=>{
+            res.statusCode = 302;
+            res.setHeader('Location', '/');
+            return res.end();
+        });
         });
     }
     res.setHeader('Content-Type', 'text/html');
