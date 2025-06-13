@@ -1,10 +1,10 @@
-const http = require('http');
-const fs = require('fs'); //filesystem for creating a new file
+import { createServer } from 'http';
+import { writeFileSync } from 'fs'; //filesystem for creating a new file
 
-const server = http.createServer((req,res)=>{
+const server = createServer((req,res)=>{
     console.log(req.url,req.method,req.headers)
-    const url = req.url
-    const method = req.method
+     url = req.url
+     method = req.method
     if ( url === '/') {
         res.write('<html>')
         res.write('<head><title>Enter Message</title></head>');
@@ -13,10 +13,19 @@ const server = http.createServer((req,res)=>{
         return res.end();
     }
     if (url === '/message' && method === 'POST') {
-        fs.writeFileSync('message.txt','Dummy');
+        const body=[];
+        req.on('data',(chunk)=>{
+            console.log(chunk);
+            body.push(chunk)});
+        req.on('end',()=>{
+        const parsedData= Buffer.concat(body).toString();
+        console.log(parsedData);
+        const message = parsedData.split('=')[1];
+        writeFileSync('message.txt',message);
         res.statusCode = 302;
         res.setHeader('Location', '/');
         return res.end();
+        });
     }
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>')
