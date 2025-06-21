@@ -1,0 +1,136 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #f76b1c;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #333;
+}
+
+main {
+    max-width: 400px;
+    margin: 3rem auto;
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    color: #f76b1c;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+/* Add Product Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+}
+
+input[type="text"] {
+    padding: 0.7rem 1rem;
+    border: 1px solid #f6d365;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus {
+    border: 1.5px solid #f76b1c;
+}
+
+button[type="submit"] {
+    background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(247,107,28,0.08);
+    transition: background 0.2s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* 404 Page */
+body.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+}
+
+.not-found-container {
+    background: rgba(255,255,255,0.97);
+    padding: 3rem 2.5rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.not-found-container h1 {
+    font-size: 3rem;
+    color: #f5576c;
+    margin-bottom: 1rem;
+}
+
+.not-found-container p {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.not-found-container a {
+    color: #f093fb;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.not-found-container a:hover {
+    color: #f5576c;
+}

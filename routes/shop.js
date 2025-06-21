@@ -1,15 +1,11 @@
-import path from 'path';
 import express from 'express';
-import { fileURLToPath } from 'url';
-
-// Manually define __dirname for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import path from 'path';
+import rootDir from '../utils/path.js'; 
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
+    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 });
 
 export default router;

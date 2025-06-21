@@ -1,29 +1,18 @@
-import path from 'path';
 import express from 'express';
-import { fileURLToPath } from 'url';
+import path from 'path';
+import rootDir from '../utils/path.js';
 
-const router = express.Router(); 
+const router = express.Router();
 
-// Manually define __dirname for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve form on GET request /admin/add-product ==> GET
+// Serve form on GET request /admin/add-product
 router.get('/add-product', (req, res, next) => {
-    // res.send(`
-    //     <form action="/admin/product" method="POST">
-    //         <input type="text" name="title">
-    //         <button type="submit">Add Product</button>
-    //     </form>
-    // `);
-    res.sendFile(path.join(__dirname, '../' , 'views' , 'add-product.html'))
+    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 });
 
-// Handle form submission /admin/add-product ==> POST
+// Handle form submission /admin/product
 router.post('/product', (req, res, next) => {
     console.log(req.body);
     res.redirect('/');
 });
 
-// module.exports = router;
-export default router; 
+export default router;
