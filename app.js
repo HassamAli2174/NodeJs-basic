@@ -1,19 +1,19 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import adminRoutes from './routes/admin.js'
+import userRoutes from './routes/shop.js'
+
+
 const app = express();
 
-app.use((req,res,next)=>{
-    console.log('This Always Runs');
-    next(); //allows the request to continue to the next middleware in line 
-})
+// Middleware to parse form data
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/add-product',(req,res,next)=>{
-    console.log('The middleware');
-    res.send('<h1>The "Add Product" Page</h1>');
-})
+app.use(adminRoutes);
+app.use(userRoutes);
 
-app.use('/',(req,res,next)=>{
-    console.log('In the next middleware');
-    res.send('<h1>Hello from express</h1>');
-})
 
-app.listen(3000);
+
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
