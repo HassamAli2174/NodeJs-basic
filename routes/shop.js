@@ -7,7 +7,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     console.log('shop.js', adminData.products);
-    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+    // res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+    // Using Pug template to render shop page
+    res.render('shop');
 });
 
 export default router;

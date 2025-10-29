@@ -11,6 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', 'views');    
 
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: false }));
