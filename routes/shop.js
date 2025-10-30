@@ -9,7 +9,8 @@ router.get('/', (req, res, next) => {
     console.log('shop.js', adminData.products);
     // res.sendFile(path.join(rootDir, 'views', 'shop.html'));
     // Using Pug template to render shop page
-    res.render('shop');
+    const product = adminData.products;
+    res.render('shop', {prods:product, docTitle:'Shop Page'});
 });
 
 export default router;
